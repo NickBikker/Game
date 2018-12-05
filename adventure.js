@@ -5,6 +5,7 @@ var titel = document.getElementById('title');
 var text = document.getElementById('description');
 var item = document.getElementById('inventoryItem');
 var container = document.getElementById('game-container');
+var buttoncontainer = document.getElementById('game-buttons');
 
 var pickedupweapon = false;
 var pickedupessence = false;
@@ -15,9 +16,12 @@ var killeddancer = false;
 
 function start(){
     keuze1.innerHTML = 'Start Game';
-    keuze2.style.display = 'none';
-    keuze3.style.display= 'none';
+    keuze2.innerHTML = 'About';
+    keuze3.innerHTML = 'Quit';
     item.style.display ='none';
+    buttoncontainer.className = 'homescreenbutton';
+    titel.className = 'titelstart';
+    text.className = 'textstart';
     titel.innerHTML = 'Welkom bij de Dark Souls 3 Experience';
     text.innerHTML = 'Dit is een game waar je een paar senarios gaat mee maken die je ook in Dark Souls tegen komt.';
     container.style.background = "url(img/start.jpg)";
@@ -26,28 +30,37 @@ function start(){
 }
 
 function boss1(){
-    keuze1.innerHTML = 'run the fuck away';
+    keuze1.innerHTML = 'run';
     keuze2.style.display = 'inline-block';
-    keuze2.innerHTML = 'Fight';
+    keuze2.innerHTML = 'Fight!';
     keuze3.style.display = 'inline-block';
-    keuze3.innerHTML = 'Try to romance it';
+    keuze3.innerHTML = 'Fight?';
+    buttoncontainer.className = 'gamebuttons';
+    text.className = 'gametexts';
+    titel.className = 'gametitels';
     container.style.backgroundImage ='url(img/boss1.png)';
     titel.innerHTML = 'You encountered your first boss';
-    text.innerHTML = 'The gatekeeper of worlds.';
+    text.innerHTML = 'The gatekeeper of worlds. Thats what they called him. You will not be able to beat him without a proper weapon';
     keuze1.onclick = firelink;
     keuze2.onclick = dead;
     keuze3.onclick = dead;
+    item.style.display = 'none';
 }
 
 
 function firelink(){
     keuze1.innerHTML = 'Go back';
-    keuze2.style.display = 'inline-block';
+    if(pickedupweapon == true){
+        keuze2.style.display = 'inline-block';
+    }else{
+        keuze2.style.display = 'none';
+    }
     keuze2.innerHTML = 'Go forward';
     keuze3.style.display = 'none';
     container.style.backgroundImage = 'url(img/fire.jpg)';
     titel.innerHTML = 'You reached the firelink shrine';
-    text.innerHTML = 'This place......I know this place! But....From where? But untill I can remember, I need to find a weapon';
+    text.innerHTML = 'This place looks like a safe area! Maybe I can find myself a weapon here somehow. Maybe I need to check the place where the first boss was?';
+    item.style.display = 'none';
     keuze1.onclick = deadboss1;
     if(killedabyss == false){
         keuze2.onclick = boss2;
@@ -65,6 +78,7 @@ function deadboss1(){
     titel.innerHTML = 'this is the bossroom';
     text.innerHTML = 'Where did the boss go? Well....Maybe I can find myself a weapon somewhere';
     item.style.display = 'block';
+    item.className = 'item1';
     item.src = 'img/item.png';
     keuze1.onclick = firelink;
     item.onclick = weapon;
@@ -96,6 +110,7 @@ function boss2(){
     container.style.backgroundImage = 'url(img/boss2.jpg)';
     titel.innerHTML = 'You encountered another boss!';
     text.innerHTML = 'From Fire to void, You dont know where you are..The only thing you can do is gaze into the abyss';
+    item.style.display = 'none';
     if(pickedupweapon == true){
         keuze1.onclick = todancer;
     }else if(pickedupweapon == false){
@@ -115,6 +130,7 @@ function todancer(){
     container.style.backgroundImage ='url(img/todancer.jpg)';
     titel.innerHTML = 'You reached the high wall of lothric';
     text.innerHTML = 'You just defeated the lord of the abyss, How much worse can it get from here?';
+    item.style.display = 'none';
     keuze1.onclick = deadboss2;
     if(killeddancer == false){
         keuze2.onclick = boss3;
@@ -133,6 +149,8 @@ function deadboss2(){
     container.style.backgroundImage = 'url(img/deadboss2.jpg)';
     titel.innerHTML = 'abyss watcher area';
     text.innerHTML = 'This is the place where you fought the Lord of the abyss. His corrupted essence is still lingering.';
+    item.style.display = 'block';
+    item.className = 'item2';
     item.src = 'img/item2.png';
     keuze1.onclick = firelink;
     keuze2.onclick = todancer;
@@ -163,7 +181,8 @@ function topontiff(){
     keuze2.innerHTML = 'Go forward';
     container.style.backgroundImage = 'url(img/topontiff.jpg)';
     titel.innerHTML = 'You Reached Irithyll of the Boreal Valley';
-    text.innerHTML = 'You are about to face the maker of corruption. The only way you can kill him is if you aquired a weapon, Essence of the abyss and a phantom blade from the maid.'
+    text.innerHTML = 'You are about to face the maker of corruption. The only way you can kill him is if you aquired a weapon, Essence of the abyss and a phantom blade from the maid.';
+    item.style.display = 'none';
     keuze1.onclick = deadboss3;
     keuze2.onclick = boss4;
 
@@ -178,6 +197,8 @@ function deadboss3(){
     container.style.backgroundImage = 'url(img/deadboss3.jpg)';
     titel.innerHTML = 'This was the boss room of the dancer';
     text.innerHTML = 'You ended the dancers suffering but her phantom is still in existence';
+    item.style.display = 'block';
+    item.className = 'item3';
     item.src = 'img/item3.png';
     keuze1.onclick = todancer;
     keuze2.onclick = topontiff;
@@ -196,6 +217,7 @@ function boss4(){
     titel.innerHTML = 'Second boss! ow no';
     text.innerHTML = 'Tell me pal, Whats the plan';
     container.style.backgroundImage = 'url(img/boss4.jpg)';
+    item.style.display = 'none';
     keuze1.onclick = dead;
     if(pickedupweapon == true && pickedupessence == true && pickedupphantom == true){
         keuze2.onclick = win;
