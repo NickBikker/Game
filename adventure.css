@@ -143,3 +143,37 @@ button:hover{
     top: 95%;
     left: 50%;
 }
+
+.aboutbuttons{
+    position: absolute;
+    top: 5%;
+    left: 5%;
+}
+
+.buttonabout{
+    color: white;
+    border: none;
+}
+
+.buttonabout:hover{
+    background-color: gray;
+}
+
+.titelabout{
+    color: antiquewhite;
+    position: absolute;
+    top: 10%;
+    left: 25%;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 50px;
+}
+
+.textabout{
+    color: antiquewhite;
+    position: absolute;
+    top: 24%;
+    left: 25%;
+    width: 600px;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 30px;
+}

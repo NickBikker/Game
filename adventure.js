@@ -18,19 +18,26 @@ function start(){
     keuze1.innerHTML = 'Start Game';
     keuze2.innerHTML = 'About';
     keuze3.innerHTML = 'Quit';
+    keuze1.style.display = 'block';
+    keuze2.style.display = 'block';
+    keuze3.style.display = 'block';
     item.style.display ='none';
     buttoncontainer.className = 'homescreenbutton';
+    keuze1.className = 'papa';
     titel.className = 'titelstart';
     text.className = 'textstart';
     titel.innerHTML = 'Welkom bij de Dark Souls 3 Experience';
     text.innerHTML = 'Dit is een game waar je een paar senarios gaat mee maken die je ook in Dark Souls tegen komt.';
     container.style.background = "url(img/start.jpg)";
     keuze1.onclick = boss1;
+    keuze2.onclick = about;
+    keuze3.onclick = close;
 
 }
 
 function boss1(){
     keuze1.innerHTML = 'run';
+    keuze1.style.display = 'inline-block';
     keuze2.style.display = 'inline-block';
     keuze2.innerHTML = 'Fight!';
     keuze3.style.display = 'inline-block';
@@ -248,9 +255,24 @@ function win(){
 
 }
 
-
-
 function reload(){
     location.reload();
 }
+
+function about(){
+    keuze1.innerHTML = '< Back';
+    keuze2.style.display = 'none';
+    keuze3.style.display = 'none';
+    buttoncontainer.className = 'aboutbuttons';
+    keuze1.className = 'buttonabout';
+    titel.className = 'titelabout';
+    text.className = 'textabout';
+    titel.innerHTML = 'een kleine uitleg van wat je moet doen in de game.';
+    text.innerHTML = 'In deze game ga je een corrupted baas verslaan. Om hem te kunnen verslaan heb je 3 items nodig.' +
+        'een wapen, een essence en een phantom sword. Om deze items te kunnen vinden moet je terug naar de kamers waar je' +
+        'de bosses hebt verslagen om zo de items te kunnen vinden. als je 1 van de 3 items niet hebt, kan je niet winnen.';
+    container.style.backgroundImage = 'url(img/about.jpg)';
+    keuze1.onclick = start;
+}
+
 start();
